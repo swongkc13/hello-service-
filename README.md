@@ -206,6 +206,34 @@ Response:
 
 ⸻
 
+---
+
+📊 Day 11 – Add Spring Boot Actuator (Metrics Ready)
+
+- Added `spring-boot-starter-actuator` to `pom.xml`.
+- Exposed all management endpoints in `application.properties`:
+  ```properties
+  management.endpoints.web.exposure.include=*
+  ```
+
+- Restarted the app and verified operational metrics:
+
+Example:
+
+```bash
+curl http://localhost:8080/actuator
+```
+
+```json
+{
+  "_links": {
+    "health": { "href": "http://localhost:8080/actuator/health" },
+    "metrics": { "href": "http://localhost:8080/actuator/metrics" },
+    "loggers": { "href": "http://localhost:8080/actuator/loggers" }
+  }
+}
+```
+
 ## 🧪 Running Unit Tests
 
 Run tests with:
@@ -224,4 +252,6 @@ mvn clean test
 - **Jackson (for pretty JSON)**
 - **Maven**
 - **JUnit 5 + MockMvc**
+
+
 
