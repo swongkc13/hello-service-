@@ -233,6 +233,24 @@ curl http://localhost:8080/actuator
   }
 }
 ```
+⸻
+
+### :floppy_disk: Day 12 – Persistent PostgreSQL Data with Docker Volumes
+	*	Configured a named Docker volume to persist PostgreSQL data across container restarts.
+	*	Used the following in docker-compose.yml:
+
+volumes:
+  - postgres-data:/var/lib/postgresql/data
+
+
+	*	Tested persistence:
+		1.	Created a user: POST /users
+		2.	Restarted the container: docker-compose down && docker-compose up --build
+		3.	Verified user data still exists: GET /users
+
+:heavy_check_mark: This confirms data is stored outside the container in a durable Docker-managed volume.
+
+⸻
 
 ## 🧪 Running Unit Tests
 
