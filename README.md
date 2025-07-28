@@ -185,6 +185,27 @@ curl http://localhost:8080/users
     }
   ]
 
+
+## ❤️‍🩹 Day 10 – Health Check Endpoint
+	•	✅ Added a lightweight /health endpoint.
+	•	🔁 Returns HTTP 200 OK with a simple JSON payload:
+
+curl http://localhost:8080/health
+
+Response:
+
+{
+  "status": "UP"
+}
+
+### 📦 Useful for:
+	•	Docker container health checks
+	•	Kubernetes liveness/readiness probes
+	•	CI/CD pipeline checks
+	•	Basic monitoring without hitting the database
+
+⸻
+
 ## 🧪 Running Unit Tests
 
 Run tests with:
