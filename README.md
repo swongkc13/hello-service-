@@ -1,37 +1,34 @@
-Sure! Here’s your fully updated README.md with all content from Day 1 through Day 7, copy-paste ready:
+Hello-Service
+
+A minimal Spring Boot microservice designed for daily learning and portfolio development.
+This project showcases incremental full-stack backend progress — built with Java 17, Spring Boot 3, and tested using JUnit & MockMvc.
+Includes Docker support and a transition from in-memory H2 to a PostgreSQL container using docker-compose.
 
 ⸻
 
+📆 Progress Overview
 
-# Hello-Service
+Day	What Was Built
+Day 1	Spring Boot base project + Dockerfile setup
+Day 2	/echo endpoint + unit tests
+Day 3	User CRUD API using Spring Data JPA + H2 DB
+Day 4	PostgreSQL integration via Docker Compose
+Day 5	Verified PostgreSQL persistence and deployment
+Day 6	Input validation using @NotBlank, error handler, JSON UX
+Day 7	GET /users/{id} with Optional + 404 handling
+Day 8	DELETE /users/{id} with safe delete + not found response
 
-A minimal Spring Boot microservice designed for daily learning and portfolio development.  
-This project showcases incremental full-stack backend progress — built with **Java 17**, **Spring Boot 3**, and tested using **JUnit & MockMvc**.  
-Includes **Docker** support and a transition from **in-memory H2** to a **PostgreSQL container** using `docker-compose`.  
 
----
+⸻
 
-## 📆 Progress Overview
+🚀 API Endpoints
 
-| Day   | What Was Built                                                 |
-| ----- | -------------------------------------------------------------- |
-| Day 1 | Spring Boot base project + Dockerfile setup                    |
-| Day 2 | `/echo` endpoint + unit tests                                  |
-| Day 3 | User CRUD API using Spring Data JPA + H2 DB                    |
-| Day 4 | PostgreSQL integration via Docker Compose                      |
-| Day 5 | Verified PostgreSQL persistence and deployment                 |
-| Day 6 | Input validation using `@NotBlank`, error handler, JSON UX     |
-| Day 7 | `GET /users/{id}` with Optional + 404 handling                 |
+✅ Day 1 – GET /hello
+	•	Basic Spring Boot health check route.
+	•	Returns:
 
----
+Hello from Spring Boot!
 
-## 🚀 API Endpoints
-
-### ✅ Day 1 – `GET /hello`
-- Basic Spring Boot health check route.
-- **Returns**:  
-  ```text
-  Hello from Spring Boot!
 
 
 ⸻
@@ -40,7 +37,11 @@ Includes **Docker** support and a transition from **in-memory H2** to a **Postgr
 	•	Accepts plain text and echoes it back.
 	•	URL: /echo
 	•	Method: POST
-	•	Body: your message
+	•	Body:
+
+your message
+
+
 	•	Response:
 
 Echo: your message
@@ -80,6 +81,8 @@ spring.datasource.url=jdbc:postgresql://localhost:5432/hello_service
 spring.datasource.username=postgres
 spring.datasource.password=postgres
 spring.jpa.hibernate.ddl-auto=update
+
+
 
 ✅ Start PostgreSQL locally:
 
@@ -148,6 +151,34 @@ curl -i http://localhost:8080/users/9999
 Response:
 
 HTTP/1.1 404 Not Found
+
+
+⸻
+
+🗑️ Day 8 – DELETE /users/{id} with 404 Handling
+	•	Added support to safely delete users.
+	•	Handles 2 scenarios:
+	•	✅ Successful deletion:
+
+curl -X DELETE http://localhost:8080/users/1
+
+Response:
+
+{
+  "message": "User deleted successfully"
+}
+
+
+	•	❌ Non-existent user:
+
+curl -X DELETE http://localhost:8080/users/99999
+
+Response:
+
+{
+  "error": "User not found"
+}
+
 
 
 ⸻

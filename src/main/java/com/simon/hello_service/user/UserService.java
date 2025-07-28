@@ -22,4 +22,13 @@ public class UserService {
     public User save(User user) {
         return repo.save(user);
     }
+
+    public boolean deleteById(Long id) {
+    Optional<User> existingUser = repo.findById(id);
+    if (existingUser.isPresent()) {
+        repo.deleteById(id);
+        return true;
+    }
+    return false;
+    }
 }
