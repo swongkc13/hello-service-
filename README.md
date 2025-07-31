@@ -250,6 +250,43 @@ volumes:
 
 :heavy_check_mark: This confirms data is stored outside the container in a durable Docker-managed volume.
 
+## 🚀 Day 13 – Deploy to Render
+
+- ✅ Successfully deployed the Spring Boot application to **Render** using:
+  - Docker deployment option
+  - PostgreSQL database provisioned through Render
+
+- 🔐 Render Environment Variables:
+  - `SPRING_PROFILES_ACTIVE=prod`
+  - `SPRING_DATASOURCE_URL`
+  - `SPRING_DATASOURCE_USERNAME`
+  - `SPRING_DATASOURCE_PASSWORD`
+
+- ✅ Externalized all secrets and sensitive values via `.env` and Render dashboard
+
+- 🛠️ Application now builds via Dockerfile and runs using `java -jar app.jar`
+
+- 📦 Dockerfile tested for both local and cloud deployments
+
+- ✅ Verified full CRUD functionality via deployed Render URL:
+  ```bash
+  curl https://your-app-name.onrender.com/users
+
+  ## 🧹 Day 14 – Weekly Reflection + Cleanup
+
+- 🧾 Reviewed and updated all previous progress entries in `README.md`
+- ✅ Pushed `.env.example` to the repo to help others set up local development securely
+- 🧪 Verified profile-specific config works:
+  - `application.properties` – for Render (production) deployment
+  - `application-local.properties` – for local dev with Docker Compose PostgreSQL
+
+- 🐳 Docker Compose PostgreSQL still persists data correctly using:
+  ```yaml
+  volumes:
+    - postgres-data:/var/lib/postgresql/data
+- 🔍 Tested database persistence by restarting the container and verifying user data remains
+
+
 ⸻
 
 ## 🧪 Running Unit Tests
